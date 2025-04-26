@@ -11,8 +11,8 @@ import kotlin.math.abs
 fun main() {
     val numbers = File("17.txt").readLines().map { it.toInt() }
 
-    val minTripleDiv7 = numbers.filter { abs(it) in 100..999 }.minByOrNull { abs(it) }!!
-    val min4Digit = numbers.filter { abs(it) in 1000..9999 }.minByOrNull { abs(it) }!!
+    val minTripleDiv7 = numbers.filter { abs(it) in 100..999 }.filter { it % 7 == 0 }.minOf { abs(it) }
+    val min4Digit = numbers.filter { abs(it) in 1000..9999 }.minOf { abs(it) }
     val requiredLastDigit = abs(min4Digit) % 10
     var pairCount = 0
     var maxSum = Int.MIN_VALUE
